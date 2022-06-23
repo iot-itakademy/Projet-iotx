@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ app.user.firstname }} !{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">
+        Information du profil :
+    </h1>
+    <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+        <div class="card p-4">
+            <div class=" image d-flex flex-column justify-content-center align-items-center">
+
+                <span class="name mt-3">Prénom- Nom : {{ app.user.firstname }}  {{ app.user.lastname }} </span>
+                <span class="idd"> E-mail : {{ app.user.email }}</span>
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2 ">
+                    <span class="idd1"> Adresse Postale : {{ app.user.address }}, {{ app.user.city }}, {{ app.user.zipcode }}</span>
+                </div>
+                {# TODO VOIR SI ON MODIFIE LE PROFIL PLUS TARD
+                {#                <div class=" d-flex mt-2"> #}
+                {#                    <button class="btn1 btn-dark">Modifier profil</button> #}
+                {#                </div> #}
+            </div>
+        </div>
+    </div>
+{% endblock %}
