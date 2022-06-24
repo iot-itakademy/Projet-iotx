@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Strutoscop!{% endblock %}</title>
     {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
         <link rel="stylesheet" href="https://bootswatch.com/5/lumen/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <link rel="stylesheet" href="assets/styles/app.css">
     {% endblock %}
 
 
@@ -28,5 +29,8 @@
         {% block body %}{% endblock %}
     </div>
 
+    {% block footer %}
+        {% include 'includes/_footer.html.twig' %}
+    {% endblock %}
 </body>
 </html>
