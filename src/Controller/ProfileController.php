@@ -44,6 +44,15 @@ class ProfileController extends AbstractController
 
         if ($request->isMethod('POST')){
 
+            $user = $this->getUser();
+
+            if ($request->request->get('pass') == $request->request->get('pass2')){
+            $user->setPassword($userPasswordHasher->hashPassword($user, $request->request->get('pass')));
+            $em->flush();
+            $this->addFlash('message', 'mot de passe mis à jour');
+            }else{
+                $this->addFlash('error','les deux mot de passe ne correspondent pas');
+            }
         }
 
         return $this->render('profile/edit_pass.html.twig',[
