@@ -7,22 +7,24 @@ footer{
     padding-bottom: 15px;
     font-family: 'Poppins', regular, sans-serif;
 }
-footer div ul li{
-    list-style: none;
-    line-height: 2em;
+footer ul{
+    margin-right: 50px;
 }
+
 footer a:link{
     text-decoration: none;
 }
 footer a{
     line-height: 15px;
+    font-size: 46px;
 }
 footer img{
-    width: 15%;
+    width: 50%;
     margin-left: 50px;
 }
-#copyright, a{
+#copyright small{
     color: white;
+    font-size: 14px;
 }
 a:hover{
     color: #E41C64;
