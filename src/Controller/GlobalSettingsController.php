@@ -13,8 +13,9 @@ class GlobalSettingsController extends AbstractController
     public function edit(EntityManagerInterface $em)
     {
         $form = $this->createForm(GlobalSettingsType::class);
+        $global_settings_form = $form->createView();
         return $this->render('global_settings/_form.html.twig', [
-            'global_settings_form' => $form->createView()
+            'global_settings_form' => $global_settings_form
         ]);
     }
 }

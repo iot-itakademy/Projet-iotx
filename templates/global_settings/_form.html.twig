@@ -1,4 +1,15 @@
-{{ form_start(global_settings_form) }}
-    {{ form_widget(global_settings_form) }}
-    <button type="submit" class="btn btn-primary">Mettre à jour les paramètres généraux</button>
-{{ form_end(global_settings_form) }}
+
+{% block title %}
+    Formulaire
+{% endblock %}
+
+    {% block body %}
+
+
+        {{ form_start(global_settings_form) }}
+        {{ form_widget(global_settings_form) }}
+        <button type="submit" class="btn btn-primary">Mettre à jour les paramètres généraux</button>
+        {{ form_end(global_settings_form) }}
+
+
+    {% endblock %}
