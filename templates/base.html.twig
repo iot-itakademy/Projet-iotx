@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <link rel="stylesheet" href="{{ asset ('styles/footer.css') }}">
         <link rel="stylesheet" href="{{ asset ('styles/header.css') }}">
+        <link rel="stylesheet" href="{{ asset ('styles/home.css') }}">
         <link rel="stylesheet" href="{{ asset ('scss/custom.scss') }}">
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,12 +19,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     {% endblock %}
 
-
-
     {% block javascripts %}
         {#{{ encore_entry_script_tags('app') }}#}
     {% endblock %}
-
 
 </head>
 <body>
@@ -37,6 +35,15 @@
 
     {% block footer %}
         {% include 'includes/_footer.html.twig' %}
+    {% endblock %}
+    {% block jevascripts %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
+                integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer">
+        </script>
+        {# <script src="{{ asset ('./public/script/chart.js') }}"></script> #}
+        <script>app.use("/static", express.static('./static/chart.js'));</script>
     {% endblock %}
 </body>
 </html>
