@@ -13,20 +13,11 @@
         <p class="lead">L'application qui permet de surveiller ta maison ! </p>
         <hr class="my-4">
 
-        <!--  Home Page application
-
-        Afficher les informations de la caméra (nom, modèle, résolution)
-        Afficher des images (les plus récentes) : Graphique
-        Nombre de photos prises / jour : Graphique
-        Nombre d'images / vidéos en Graphique
-        Nombre de fois ou l'alarme a sonné (compteur)
-        Afficher l'utilisateur
-
-        -->
+        {% if app.user %}
 
         <h1 class="title">En direct</h1>
-        {{ render_chart(chart) }}
-        <main class="informations">
+
+        <div class="informations">
             <div>
                 <h2>Votre activité du {{ "now"|date("d/m/Y") }}</h2>
                 <div>
@@ -40,24 +31,19 @@
                     </ul>
                 </div>
             </div>
-
-            <div class="graph mt-5">
-                <h3>Rapport</h3>
-
-
+            <h3>Rapport</h3>
+            <div class="graph d-flex justify-content-end">
+                {{ render_chart(chart) }}
             </div>
-        </main>
-        <!--{% if app.user %}-->
+        </div>
 
-
-<!--
             {%else%}
         <p>Pour commencer, rendez-vous sur la page d'inscription du projet.</p>
         <p class="lead">
             <a class="btn btn-primary btn-lg" href="#" role="button">inscription</a>
         </p>
         {% endif %}
-        -->
+
     </div>
     </div>
 {% endblock %}
