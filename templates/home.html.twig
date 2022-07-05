@@ -25,7 +25,7 @@
         -->
 
         <h1 class="title">En direct</h1>
-
+        {{ render_chart(chart) }}
         <main class="informations">
             <div>
                 <h2>Votre activité du {{ "now"|date("d/m/Y") }}</h2>
@@ -40,11 +40,11 @@
                     </ul>
                 </div>
             </div>
+
             <div class="graph mt-5">
                 <h3>Rapport</h3>
-                <canvas id="graph1" width="400" height="100">
 
-                </canvas>
+
             </div>
         </main>
         <!--{% if app.user %}-->
