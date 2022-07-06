@@ -19,6 +19,7 @@
         "symfony/flex": "^2",
         "symfony/form": "6.0.*",
         "symfony/framework-bundle": "6.0.*",
+        "symfony/http-client": "6.0.*",
         "symfony/proxy-manager-bridge": "6.0.*",
         "symfony/runtime": "6.0.*",
         "symfony/security-bundle": "6.0.*",
@@ -26,7 +27,8 @@
         "symfony/ux-chartjs": "^2.2",
         "symfony/validator": "6.0.*",
         "symfony/yaml": "6.0.*",
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "vich/uploader-bundle": "^1.19"
     },
     "config": {
         "platform-check": false,

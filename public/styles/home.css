@@ -13,3 +13,10 @@
 .graph{
     width: 50%;
 }
+#chart1{
+    width: 50%;
+    height: 40%;
+}
+#chart2{
+    width: 20%;
+}

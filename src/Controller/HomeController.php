@@ -2,20 +2,25 @@
 
 namespace App\Controller;
 
+use stdClass;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class HomeController extends AbstractController
 {
+    private $client;
+
     #[Route('/', name: 'home.index')]
     public function index(ChartBuilderInterface $chartBuilder): Response
     {
-        $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
-        $chart->setData([
+        $chart1 = $chartBuilder->createChart(Chart::TYPE_LINE);
+        $chart1->setData([
             'labels' => ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
             'datasets' => [
                 [
@@ -26,8 +31,42 @@ class HomeController extends AbstractController
                 ],
             ],
         ]);
-        return $this->render('home.html.twig', [
-            'chart' => $chart
+
+        $chart2 = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
+        $chart2->setData([
+            'labels' => ['Intrus', 'Amis', 'Erreur'],
+            'datasets' => [
+                [
+                    'label' => 'Activité de la semaine',
+                    'data'=> [300, 50, 100],
+                    'backgroundColor' => [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+
+                ]
+            ]
         ]);
+        $images = $this->callAPI();
+
+        return $this->render('home.html.twig', [
+            'chart1' => $chart1,
+            'chart2' => $chart2,
+            'images' => $images
+        ]);
+    }
+
+    public function __construct(HttpClientInterface $client){
+        $this->client = $client;
+    }
+
+    public function callAPI(): array {
+
+        $response = $this->client->request(
+            'GET',
+            'http://www.scrutoscope.live/api/file/images'
+        );
+        return json_decode($response->getContent());
     }
 }

@@ -17,7 +17,14 @@
 
         <h1 class="title">En direct</h1>
 
-        <div class="informations">
+            {% for image in images %}
+                <div>
+                    <img src="data:image/png;base64, {{ image.base64Image }}"
+                         alt="captures d'écrans" />
+                </div>
+            {% endfor %}
+
+            <div class="informations">
             <div>
                 <h2>Votre activité du {{ "now"|date("d/m/Y") }}</h2>
                 <div>
@@ -33,14 +40,24 @@
             </div>
             <h3>Rapport</h3>
             <div class="graph d-flex justify-content-end">
-                {{ render_chart(chart) }}
+                <h3>Nombre de détections</h3>
+                <div id="chart1">
+                    {{ render_chart(chart1) }}
+                </div>
+                <h3>Captures d'écrans</h3>
+                <div id="chart2">
+                    {{ render_chart(chart2) }}
+                </div>
+            </div>
+            <div>
+                <a class="btn btn-primary btn-lg" href="#" role="button">Supprimer les photos</a>
             </div>
         </div>
 
             {%else%}
         <p>Pour commencer, rendez-vous sur la page d'inscription du projet.</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">inscription</a>
+            <a class="btn btn-primary btn-lg" href="{{path('app_register')}}" role="button">Inscription</a>
         </p>
         {% endif %}
 
