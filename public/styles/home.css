@@ -1,0 +1,22 @@
+.informations{
+    box-shadow: 2px 2px 10px rgba(1, 1, 0, 0.738);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.camera{
+    list-style: none;
+}
+.title{
+    margin-bottom: 30px;
+}
+.graph{
+    width: 50%;
+}
+#chart1{
+    width: 50%;
+    height: 40%;
+}
+#chart2{
+    width: 20%;
+}

@@ -4,12 +4,15 @@
 footer{
     background: #281753;
     padding-top: 30px;
-    padding-bottom: 15px;
     font-family: 'Poppins', regular, sans-serif;
 }
 footer div ul li{
     list-style: none;
-    line-height: 2em;
+    line-height: 3em;
+}
+footer div ul{
+    position: absolute;
+    margin-left: -50px;
 }
 footer a:link{
     text-decoration: none;
@@ -23,6 +26,10 @@ footer img{
 }
 #copyright, a{
     color: white;
+    padding-bottom: 30px;
+}
+#copyright{
+    font-size: 12px;
 }
 a:hover{
     color: #E41C64;

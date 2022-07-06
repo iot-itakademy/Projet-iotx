@@ -9,19 +9,58 @@
 
     <div class="container">
     <div class="jumbotron">
-        <h1 class="display-4">Bienvenue sur notre site  !</h1>
-        <p class="lead">On va te permettre de surveiller ta maison ! </p>
+        <h1 class="display-4">Bienvenue sur Strutoscop</h1>
+        <p class="lead">L'application qui permet de surveiller ta maison ! </p>
         <hr class="my-4">
 
         {% if app.user %}
 
+        <h1 class="title">En direct</h1>
+
+            {% for image in images %}
+                <div>
+                    <img src="data:image/png;base64, {{ image.base64Image }}"
+                         alt="captures d'écrans" />
+                </div>
+            {% endfor %}
+
+            <div class="informations">
+            <div>
+                <h2>Votre activité du {{ "now"|date("d/m/Y") }}</h2>
+                <div>
+                    <h3>
+                        Informations de la caméra :
+                    </h3>
+                    <ul class="camera">
+                        <li>Nom :</li>
+                        <li>Modèle :</li>
+                        <li>Résolution :</li>
+                    </ul>
+                </div>
+            </div>
+            <h3>Rapport</h3>
+            <div class="graph d-flex justify-content-end">
+                <h3>Nombre de détections</h3>
+                <div id="chart1">
+                    {{ render_chart(chart1) }}
+                </div>
+                <h3>Captures d'écrans</h3>
+                <div id="chart2">
+                    {{ render_chart(chart2) }}
+                </div>
+            </div>
+            <div>
+                <a class="btn btn-primary btn-lg" href="#" role="button">Supprimer les photos</a>
+            </div>
+        </div>
 
             {%else%}
         <p>Pour commencer, rendez-vous sur la page d'inscription du projet.</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">inscription</a>
+            <a class="btn btn-primary btn-lg" href="{{path('app_register')}}" role="button">Inscription</a>
         </p>
         {% endif %}
+
     </div>
     </div>
 {% endblock %}
