@@ -1,0 +1,10 @@
+{% for image in images %}
+    <div class="card col-3" style="width: 18rem;">
+        <img src="data:image/png;base64, {{ image.base64Image }}" class="card-img-top" alt="test alt">
+        <div class="card-body">
+            <h5 class="card-title">{{ image.date }}</h5>
+            <a href="#" class="btn btn-danger" data-filename="{{ image.fileName }}"><i class="fa-solid fa-trash-can"></i></a>
+            <a download="{{ image.fileName }}" href="data:image/png;base64, {{ image.base64Image }}" class="btn btn-info"><i class="fa-solid fa-download"></i></a>
+        </div>
+    </div>
+{% endfor %}

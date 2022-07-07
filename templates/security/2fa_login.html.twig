@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Authentification Google {% endblock %}
+
+{% block body %}
+
+
+    <div class="container text-center">
+            <p class="label"><label for="_auth_code">Authentification Google</label></p>
+
+            <form class="form" action="/2fa_check" method="post">
+                <p class="widget">
+                    <input
+                            id="_auth_code"
+                            type="text"
+                            name="_auth_code"
+                            autocomplete="one-time-code"
+                            autofocus
+                    />
+                </p>
+
+                <p class="submit"><input  class="btn btn-primary" type="submit" value="Connexion" /></p>
+            </form>
+
+    </div>
+
+{% endblock %}

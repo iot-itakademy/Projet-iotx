@@ -1,0 +1,43 @@
+.informations{
+    box-shadow: 2px 2px 10px rgba(1, 1, 0, 0.738);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.camera{
+    list-style: none;
+}
+.title{
+    margin-bottom: 30px;
+}
+.graph li{
+    list-style: none;
+}
+#chart1{
+    width: 100%;
+    height: 150%;
+}
+#chart2{
+    width: 50%;
+    height: 50%;
+}
+h2{
+    color: #281753;
+    font-weight: bold;
+}
+h3{
+    color: #E21C65;
+}
+.informations ul li h4{
+    font-size: 1em;
+    color: #281753;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+footer{
+    margin-top: auto;
+}
