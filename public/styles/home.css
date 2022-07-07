@@ -32,3 +32,12 @@ h3{
     font-size: 1em;
     color: #281753;
 }
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+footer{
+    margin-top: auto;
+}

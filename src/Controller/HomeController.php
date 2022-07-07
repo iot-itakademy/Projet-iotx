@@ -12,7 +12,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class HomeController extends AbstractController
 {
-    private $client;
+    private HttpClientInterface $client;
 
     #[Route('/', name: 'home.index')]
     public function index(ChartBuilderInterface $chartBuilder): Response

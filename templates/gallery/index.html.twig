@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Galerie des captures</h1>
+            <p class="lead">Sélectionnez la période souhaité:</p>
+            <hr class="my-4">
+            {% if is_granted('ROLE_GRANTED') %}
+                <div class="d-flex align-items-center justify-content-center">
+                    <select id="selectYear" required>
+                        <option value="" disabled selected>Sélectionnez une année</option>
+                        {% for year in tabYear %}
+                            <option value="{{ year }}">{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                    <select id="selectMonth" required>
+                        <option value="" selected disabled>Sélectionnez un mois</option>
+                        <option value="01">Janvier</option>
+                        <option value="02">Février</option>
+                        <option value="03">Mars</option>
+                        <option value="04">Avril</option>
+                        <option value="05">Mai</option>
+                        <option value="06">Juin</option>
+                        <option value="07">Juillet</option>
+                        <option value="08">Août</option>
+                        <option value="09">Septembre</option>
+                        <option value="10">Octobre</option>
+                        <option value="11">Novembre</option>
+                        <option value="12">Décembre</option>
+                    </select>
+                    <input type="submit" id="submitDate" class="btn btn-primary" value="Valider">
+                </div>
+                <div id="PictureContent" class="d-flex row align-items-center justify-content-center my-3">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% block jevascripts %}
+        {{ encore_entry_script_tags('gallery') }}
+    {% endblock %}
+{% endblock %}
