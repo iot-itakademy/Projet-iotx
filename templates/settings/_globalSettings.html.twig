@@ -1,0 +1,8 @@
+{% block body %}
+    <div>
+        {% for globalSetting in globalSettings %}
+            <li>{{ globalSetting.id }}</li>
+            <p><a href="{{ path('app_global_settings_edit', {id: globalSetting.id}) }}">edit</a></p>
+        {% endfor %}
+    </div>
+{% endblock %}

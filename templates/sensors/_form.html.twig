@@ -1,4 +1,13 @@
-{{ form_start(sensors_form) }}
-    {{ form_widget(sensors_form) }}
-    <button type="submit" class="btn btn-primary">Mettre à jour les paramètres des capteurs</button>
-{{ form_end(sensors_form) }}
+{% block body %}
+
+    {{ form_start(sensors_form) }}
+        <p>{{ form_row(sensors_form.name) }}</p>
+        <p>{{ form_row(sensors_form.params) }}</p>
+        <p>{{ form_row(sensors_form.type) }}</p>
+        <p>{{ form_row(sensors_form.lastEditBy) }}</p>
+        <p>
+            <button type="submit" class="btn btn-primary">Mettre à jour les paramètres de capteurs</button>
+        </p>
+    {{ form_end(sensors_form) }}
+
+{% endblock %}

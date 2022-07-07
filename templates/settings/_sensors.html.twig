@@ -1,0 +1,8 @@
+{% block body %}
+    <div>
+        {% for sensor in sensors %}
+            <li>{{ sensor.name }}</li>
+            <p><a href="{{ path('app_sensors_edit', {id: sensor.id}) }}">edit</a></p>
+        {% endfor %}
+    </div>
+{% endblock %}

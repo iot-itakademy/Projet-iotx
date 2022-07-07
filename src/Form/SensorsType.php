@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Sensors;
 use App\Entity\SensorType;
+use App\Form\DataTransformer\DataTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -16,14 +17,14 @@ class SensorsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('params', TextareaType::class)
+            ->add($builder->create('params', TextareaType::class)->addModelTransformer(new DataTransformer()))
             ->add('name', TextType::class)
-            ->add('lastEditBy', TextType::class)
             ->add('type', EntityType::class, [
                 'class' => SensorType::class,
                 'choice_label' => 'type',
                 'multiple' => false
             ])
+            ->add('lastEditBy', TextType::class)
         ;
     }
 

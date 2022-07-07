@@ -19,7 +19,7 @@ class GlobalSettingsType extends AbstractType
             ->add('timeZone', TextType::class)
             ->add('lastEditBy', TextType::class)
             ->add('alert_mail', CheckboxType::class)
-            ->add('SurveyMode', EntityType::class, [
+            ->add('survey_mode', EntityType::class, [
                 'class' => SurveyMode::class,
                 'choice_label' => 'libelle',
                 'multiple' => false
