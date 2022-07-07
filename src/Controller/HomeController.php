@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\StatisticRepository;
 use stdClass;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,18 +13,23 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class HomeController extends AbstractController
 {
-    private $client;
+    private HttpClientInterface $client;
 
     #[Route('/', name: 'home.index')]
-    public function index(ChartBuilderInterface $chartBuilder): Response
+    public function index(ChartBuilderInterface $chartBuilder, StatisticRepository $repo): Response
     {
         $chart1 = $chartBuilder->createChart(Chart::TYPE_LINE);
+        $dateArray = [];
+        for ($i = 11; $i >= 0; $i-- ) {
+            $dateArray[] = date("F-Y", strtotime("-". $i . " months"));
+            dd($repo->getCountByDate(date("F-Y", strtotime("-". $i . " months"))));
+        }
         $chart1->setData([
-            'labels' => ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            'labels' => $dateArray,
             'datasets' => [
                 [
                     'label' => 'Activité de la semaine',
-                    'backgroundColor' => 'rgb(255, 99, 132)',
+                    'backgroundColor' => 'rgb(40, 23, 83)',
                     'borderColor' => 'rgb(255, 99, 132)',
                     'data' => [1, 2 , 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
                 ],
@@ -64,7 +70,7 @@ class HomeController extends AbstractController
     public function __construct(HttpClientInterface $client){
         $this->client = $client;
     }
-
+    ///
     public function getCameraParams(): array{
         $response = $this->client->request(
             'GET',
