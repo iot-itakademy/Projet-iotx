@@ -13,8 +13,10 @@ class SensorsController extends AbstractController
     public function edit(EntityManagerInterface $em)
     {
         $form = $this->createForm(SensorsType::class);
+        $sensors_form = $form->createView();
+
         return $this->render('sensors/_form.html.twig', [
-            'sensors_form' => $form->createView()
+            'sensors_form' => $sensors_form
         ]);
     }
 }

@@ -13,9 +13,6 @@
             <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="true">Paramètres Généraux</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profil-tab" data-bs-toggle="tab" data-bs-target="#profil" type="button" role="tab" aria-controls="profil" aria-selected="false">Profil de surveillance</button>
-        </li>
-        <li class="nav-item" role="presentation">
             <button class="nav-link" id="captor-tab" data-bs-toggle="tab" data-bs-target="#captor" type="button" role="tab" aria-controls="captor" aria-selected="false">Paramètres capteurs</button>
         </li>
     </ul>
@@ -26,7 +23,7 @@
         </div>
 
         <div class="tab-pane fade" id="captor" role="tabpanel" aria-labelledby="captor-tab">
-            {# {% include('sensors/_form.html.twig') %} #}
+            {% include('sensors/_form.html.twig') %}
         </div>
     </div>
 

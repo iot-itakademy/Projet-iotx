@@ -5,11 +5,15 @@
 
     {% block body %}
 
-
         {{ form_start(global_settings_form) }}
-        {{ form_widget(global_settings_form) }}
-        <button type="submit" class="btn btn-primary">Mettre à jour les paramètres généraux</button>
-        {{ form_end(global_settings_form) }}
+            <p>{{ form_row(global_settings_form.timeZone) }}</p>
+            <p>{{ form_row(global_settings_form.surveyMode) }}</p>
+            <p>{{ form_row(global_settings_form.alert_mail) }}</p>
+            <p>{{ form_row(global_settings_form.lastEditBy) }}</p>
+            <p>
+                <button type="submit" class="btn btn-primary">Mettre à jour les paramètres généraux</button>
+            </p>
 
+        {{ form_end(global_settings_form) }}
 
     {% endblock %}
