@@ -9,49 +9,43 @@
 
     <div class="container">
     <div class="jumbotron">
-        <h1 class="display-4">Bienvenue sur Strutoscop</h1>
+        <h1 class="display-4">Bienvenue sur Strutoscope</h1>
         <p class="lead">L'application qui permet de surveiller ta maison ! </p>
         <hr class="my-4">
 
         {% if app.user %}
 
-        <h1 class="title">En direct</h1>
-
-            {% for image in images %}
-                <div>
-                    <img src="data:image/png;base64, {{ image.base64Image }}"
-                         alt="captures d'écrans" />
-                </div>
-            {% endfor %}
-
             <div class="informations">
             <div>
-                <h2>Votre activité du {{ "now"|date("d/m/Y") }}</h2>
+                <h2 class="mb-4 text-center">Votre activité du {{ "now"|date("d/m/Y") }}</h2>
                 <div>
-                    <h3>
+                    <h3 class="mb-4">
                         Informations de la caméra :
                     </h3>
                     <ul class="camera">
-                        <li>Nom :</li>
-                        <li>Modèle :</li>
-                        <li>Résolution :</li>
+                        <li>Nom : {{ cameraInfo.name }}</li>
+                        <li>Modèle : {{ cameraParam.model }}</li>
+                        <li>Résolution : {{ cameraParam.width }}</li>
+                        <li>Distance de détection : {{ cameraParam.distance }}</li>
+                        <li>Image par seconde : {{ cameraParam.framerate }}</li>
                     </ul>
                 </div>
             </div>
-            <h3>Rapport</h3>
-            <div class="graph d-flex justify-content-end">
-                <h3>Nombre de détections</h3>
-                <div id="chart1">
-                    {{ render_chart(chart1) }}
-                </div>
-                <h3>Captures d'écrans</h3>
-                <div id="chart2">
-                    {{ render_chart(chart2) }}
-                </div>
-            </div>
-            <div>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Supprimer les photos</a>
-            </div>
+            <h3 class="mb-4">Rapport</h3>
+                <ul class="graph row align-items-start justify-content-lg-around">
+                    <li class="col-6">
+                        <h4>Nombre de détections</h4>
+                        <div id="chart1">
+                            {{ render_chart(chart1) }}
+                        </div>
+                    </li>
+                    <li class="col-6 space">
+                        <h4 class="title">Captures d'écrans</h4>
+                        <div id="chart2">
+                            {{ render_chart(chart2) }}
+                        </div>
+                    </li>
+                </ul>
         </div>
 
             {%else%}

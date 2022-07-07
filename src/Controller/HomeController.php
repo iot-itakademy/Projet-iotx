@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use stdClass;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
@@ -48,25 +46,31 @@ class HomeController extends AbstractController
                 ]
             ]
         ]);
-        $images = $this->callAPI();
+        $params = $this->getCameraParams();
+        $params = $params[0];
+        $json = json_decode(json_encode($params), true);
+        $json = json_decode($json['params'], true);
+        //dd($json);
 
         return $this->render('home.html.twig', [
             'chart1' => $chart1,
             'chart2' => $chart2,
-            'images' => $images
+            'cameraInfo' => $params,
+            'cameraParam' => $json
         ]);
+
     }
 
     public function __construct(HttpClientInterface $client){
         $this->client = $client;
     }
 
-    public function callAPI(): array {
-
+    public function getCameraParams(): array{
         $response = $this->client->request(
             'GET',
-            'http://www.scrutoscope.live/api/file/images'
+            'http://www.scrutoscope.live/api/settings/camera/1'
         );
         return json_decode($response->getContent());
     }
+
 }
