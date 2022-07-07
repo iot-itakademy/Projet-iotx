@@ -10,13 +10,13 @@
             {% if is_granted('ROLE_GRANTED') %}
                 <div class="d-flex align-items-center justify-content-center">
                     <select id="selectYear" required>
-                        <option value="" disabled selected>Sélctionnez une année</option>
+                        <option value="" disabled selected>Sélectionnez une année</option>
                         {% for year in tabYear %}
                             <option value="{{ year }}">{{ year }}</option>
                         {% endfor %}
                     </select>
                     <select id="selectMonth" required>
-                        <option value="" selected disabled>Sélctionnez un mois</option>
+                        <option value="" selected disabled>Sélectionnez un mois</option>
                         <option value="01">Janvier</option>
                         <option value="02">Février</option>
                         <option value="03">Mars</option>

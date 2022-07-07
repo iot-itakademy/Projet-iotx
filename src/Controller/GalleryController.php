@@ -37,9 +37,25 @@ class GalleryController extends AbstractController
     #[Route('/{year}/{month}', name: "byDate")]
     public function photoByDate(Request $request, HttpClientInterface $client, string $year, string $month)
     {
-        $images = $client->request("GET", "http://www.scrutoscope.live/api/file/images/" . $year . "/" . $month);
+        $imagesTemp = $client->request("GET", "http://www.scrutoscope.live/api/file/images/" . $year . "/" . $month);
+        $images = json_decode($imagesTemp->getContent());
+
+        if (empty($images))
+            return new JsonResponse([
+                'data' => "Aucune images trouvées"
+            ], 404);
+
+        foreach ($images as $image) {
+            $subStringDate = strstr($image->fileName, "_", true);
+            $date = DateTime::createFromFormat("Y-m-d-H-i-s-v", $subStringDate);
+            $image->date = $date->format('H:i:s d-m-Y');
+        }
+        $html = $this->render('gallery/carousel.html.twig', [
+            'images' => $images
+        ])->getContent();
+
         return new JsonResponse([
-            "data" => json_decode($images->getContent())
-        ]);
+            "data" => $html
+        ], 200);
     }
 }
