@@ -46,4 +46,16 @@ class SecurityController extends AbstractController
             ]
         );
     }
+
+    #[Route(path: '/2faCode', name: '2fa_qrCode')]
+    public function checkQrCode(GoogleAuthenticatorInterface $googleAuthenticator, TokenStorageInterface $storage)
+    {
+        $code = $googleAuthenticator->getQRContent($storage->getToken()->getUser());
+        $qrCode = "http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=".$code;
+        return $this->render(
+            'security/2fa_qrcode.html.twig',[
+                'qrCode' => $qrCode
+            ]
+        );
+    }
 }

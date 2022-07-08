@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QR Code Google {% endblock %}
+
+{% block body %}
+
+
+    <div class="container text-center">
+        <img id="imageQRcode" src="{{ qrCode }}" alt="">
+        <p class="label"><label for="_auth_code">Scannez votre QR Code </label></p>
+            <p class="submit">  <a   class="btn btn-primary" href="{{path('app_profile')}}">Mon compte</a></p>
+        </form>
+
+    </div>
+
+{% endblock %}

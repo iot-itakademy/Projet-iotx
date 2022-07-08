@@ -19,6 +19,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "axios": "^0.27.2",
         "bootstrap": "^5.2.0-beta1",
         "chart.js": "^3.4.1",
         "file-loader": "^6.2.0"
