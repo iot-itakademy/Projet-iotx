@@ -13,20 +13,20 @@ use Symfony\Component\Mailer\Transport;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mime\Email;
 
-#[Route('/contact', name: 'contact')]
+
 class ContactController extends AbstractController
 {
-    #[Route('/', name: '_index')]
+    #[Route('/contact', name: 'app_contact')]
     public function index(Request $request, MailerService $mailer): Response
     {
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
             $contactFormData = $form->getData();
-            return $this->redirectToRoute('contact_task_success');
+            return $this->redirectToRoute('_task_success');
         }
 
-        return $this->render('contact/index.html.twig', [
+        return $this->render('contact/contact.html.twig', [
             'form' => $form->createView()
         ]);
     }

@@ -13,7 +13,7 @@ class MailController extends AbstractController
     #[Route('/mail', name: 'app_mail')]
     public function sendEmail(MailerInterface $mailer): Response {
         $email = (new Email())
-            ->from('noreply@mysite.com')
+            ->from('jl.hartman@it-students.fr')
             ->to('jl.hartman@it-students.fr')
             //->cc('cc@example.com')
             //->bcc('bcc@example.com')
@@ -23,7 +23,7 @@ class MailController extends AbstractController
             ->text('Moi j\'aime les mails')
             ->html('<p>Petit message en HTML</p>');
 
-        $mailer->send($email);
+        $this->mailer->send($email);
         return $this->render('mail/index.html.twig', [
             'controller_name' => 'MailController',
         ]);
