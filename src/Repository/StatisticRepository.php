@@ -44,10 +44,10 @@ class StatisticRepository extends ServiceEntityRepository
         $query =$entityManager->createQuery(
             "select sum(statistic.amount) as sum
             from App\Entity\Statistic statistic
-            where statistic.date like '%:value%'"
-        )->setParameter('value', $date);
+            where statistic.date like :value"
+        )->setParameter('value', "%{$date}%");
 
-        return $query->getResult();
+        return $query->getSingleResult();
     }
 
 //    /**

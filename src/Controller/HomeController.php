@@ -20,18 +20,20 @@ class HomeController extends AbstractController
     {
         $chart1 = $chartBuilder->createChart(Chart::TYPE_LINE);
         $dateArray = [];
+        $statsArray = [];
         for ($i = 11; $i >= 0; $i-- ) {
             $dateArray[] = date("F-Y", strtotime("-". $i . " months"));
-            dd($repo->getCountByDate(date("F-Y", strtotime("-". $i . " months"))));
+            $valueRepo = $repo->getCountByDate(date("Y-m", strtotime("-". $i . " months")))["sum"];
+            $statsArray[] = $valueRepo == null ? 0 : intval($valueRepo);
         }
         $chart1->setData([
             'labels' => $dateArray,
             'datasets' => [
                 [
-                    'label' => 'Activité de la semaine',
+                    'label' => 'Activité de lannée',
                     'backgroundColor' => 'rgb(40, 23, 83)',
                     'borderColor' => 'rgb(255, 99, 132)',
-                    'data' => [1, 2 , 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+                    'data' => $statsArray
                 ],
             ],
         ]);
@@ -56,7 +58,6 @@ class HomeController extends AbstractController
         $params = $params[0];
         $json = json_decode(json_encode($params), true);
         $json = json_decode($json['params'], true);
-        //dd($json);
 
         return $this->render('home.html.twig', [
             'chart1' => $chart1,
@@ -64,13 +65,12 @@ class HomeController extends AbstractController
             'cameraInfo' => $params,
             'cameraParam' => $json
         ]);
-
     }
 
     public function __construct(HttpClientInterface $client){
         $this->client = $client;
     }
-    ///
+
     public function getCameraParams(): array{
         $response = $this->client->request(
             'GET',

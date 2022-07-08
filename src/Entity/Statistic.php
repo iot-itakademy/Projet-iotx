@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\StatisticRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\Table(name: "statistics")]
 #[ORM\Entity(repositoryClass: StatisticRepository::class)]
 class Statistic
 {
