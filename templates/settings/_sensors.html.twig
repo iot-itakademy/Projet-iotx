@@ -1,0 +1,28 @@
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Type</th>
+            <th scope="col">Dernière modification</th>
+            <th scope="col">Modifier</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for sensor in sensors %}
+            <tr>
+                <th scope="row">{{ sensor.id }}</th>
+                <td>{{ sensor.name }}</td>
+                <td>{{ sensor.type.type }}</td>
+                <td>{{ sensor.lastEditBy }}</td>
+                <td>
+                    <a href="{{ path('app_sensors_edit', {id: sensor.id}) }}">
+                        <button type="button" class="btn btn-primary">Paramétrer</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

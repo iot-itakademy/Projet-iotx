@@ -1,0 +1,34 @@
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Fuseau Horaire</th>
+            <th scope="col">Alerte mail</th>
+            <th scope="col">Mode de surveillance</th>
+            <th scope="col">Dernière modification</th>
+            <th scope="col">Modifier</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for globalSetting in globalSettings %}
+            <tr>
+                <td>{{ globalSetting.timeZone }}</td>
+                <td>
+                    {% if globalSetting.alertmail == 1 %}
+                        {{ "Activé" }}
+                    {% elseif globalSetting.alertmail == 0 %}
+                        {{ "Désactivé" }}
+                    {% endif %}
+                </td>
+                <td>{{ globalSetting.surveyMode.libelle }}</td>
+                <td>{{ globalSetting.lastEditBy }}</td>
+                <td>
+                    <a href="{{ path('app_global_settings_edit', {id: globalSetting.id}) }}">
+                        <button type="button" class="btn btn-primary">Paramétrer</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
