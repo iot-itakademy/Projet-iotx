@@ -9,43 +9,91 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+/**
+ * User
+ *
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ */
 class User implements UserInterface, PasswordAuthenticatedUserInterface,TwoFactorInterface
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    /**
+     * @var int
+     *
+     * @ORM\Id()
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue()
+     */
     private $id;
 
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=180, unique=true)
+     */
     private $email;
 
-    #[ORM\Column(type: 'json')]
+    /**
+     * @var array
+     *
+     * @ORM\Column(type="json")
+     */
     private $roles = [];
 
-    #[ORM\Column(type: 'string')]
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
     private $password;
 
-    #[ORM\Column(type: 'string', length: 100)]
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=100)
+     */
     private $lastname;
 
-    #[ORM\Column(type: 'string', length: 100)]
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=100)
+     */
     private $firstname;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $address;
 
-    #[ORM\Column(type: 'string', length: 5)]
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=5)
+     */
     private $zipcode;
 
-    #[ORM\Column(type: 'string', length: 150)]
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=150)
+     */
     private $city;
 
-    #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP' ])]
+    /**
+     * @var \DateTimeImmutable
+     *
+     * @ORM\Column(type="datetime_immutable", options={"default": "CURRENT_TIMESTAMP"})
+     */
     private $created_at;
 
-    #[ORM\Column(type: 'string',  nullable: true)]
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
     private ?string $googleAuthenticatorSecret;
 
     public function __construct() {
