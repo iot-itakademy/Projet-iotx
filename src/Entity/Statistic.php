@@ -5,22 +5,31 @@ namespace App\Entity;
 use App\Repository\StatisticRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Table(name: "statistics")]
-#[ORM\Entity(repositoryClass: StatisticRepository::class)]
+/**
+ * @ORM\Table(name="statistics"))
+ * @ORM\Entity(repositoryClass="App\Repository\StatisticRepository")
+ */
 class Statistic
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
     private $id;
-
-    #[ORM\Column(type: 'integer')]
+    /**
+     * @ORM\Column(type="integer")
+     */
     private $amount;
 
-    #[ORM\Column(type: 'string', length: 50)]
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
     private $type;
 
-    #[ORM\Column(type: 'datetime')]
+    /**
+     * @ORM\Column(type="datetime")
+     */
     private $date;
 
     public function getId(): ?int
