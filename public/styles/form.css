@@ -1,0 +1,13 @@
+#contact_Envoyer{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: 25px;
+    width: 15%;
+}
+#contact_Nom, #contact_Prenom, #contact_Email, #contact_Telephone, #contact_Sujet, #contact_Message{
+    margin-bottom: 15px;
+}
+label{
+    margin-bottom: 5px;
+}
