@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
-
+use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *

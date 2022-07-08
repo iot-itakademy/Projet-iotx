@@ -18,7 +18,9 @@ class GlobalSettingsType extends AbstractType
         $builder
             ->add('timeZone', TextType::class)
             ->add('lastEditBy', TextType::class)
-            ->add('alert_mail', CheckboxType::class)
+            ->add('alert_mail', CheckboxType::class, [
+                'required' => false
+            ])
             ->add('survey_mode', EntityType::class, [
                 'class' => SurveyMode::class,
                 'choice_label' => 'libelle',
