@@ -1,3 +1,5 @@
+{% extends 'base.html.twig' %}
+
 {% block body %}
 
     {{ form_start(sensors_form) }}
@@ -9,5 +11,9 @@
             <button type="submit" class="btn btn-primary">Mettre à jour les paramètres de capteurs</button>
         </p>
     {{ form_end(sensors_form) }}
+
+    <a href="{{ path('app_settings') }}">
+        <button type="button" class="btn btn-info">Retour aux paramètres</button>
+    </a>
 
 {% endblock %}
