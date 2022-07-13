@@ -14,6 +14,7 @@ A l'heure actuelle, plusieurs fonctionnalités dîtes primordiale manquent encor
 - Les notifications mails, SMS et push lors d'une détection de présence. 
 - La possibilité d'identifier la détection sur le mail via l'api: Un ami, un faux positif, un insecte, un intrus etc...
 - La possibilité grâce à une analyse réseau et une intégration en fonction des constructeurs, d'intégrer des appareils dynamiquement. ex: nouvelle caméra IP, nous lançons notre scan réseau, identifions l'appareil, le modèle, et ensuite nous faisont une intégration pour rendre le système interactif et dynamique.
+- Une vision de la caméra en direct sur l'interface web.
 - Création d'un script rendant le système entièrement déployable à l'éxécution de celui-ci, ou lors du premier démarrage de l'appareil.
 - Et bien d'autre....
 
